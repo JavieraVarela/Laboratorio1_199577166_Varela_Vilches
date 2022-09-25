@@ -92,25 +92,9 @@
 
 ;constructor Compress
 
-(define (compress imagen)
-  (menor (list-ref imagen 2))
-  (map (menor (list-ref imagen 2))))
-
-
-;Obtiene el menor elemento de una lista
-(define (menor lista) (cond
-    [(empty? lista) (empty)]
-    [(empty? (rest lista)) (first lista)]
-    [(> (first lista) (first (rest lista))) (menor (rest lista))]
-    [else (menor (cons (first lista) (rest (rest lista))))]))
-
-;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-;Constructor
-(define (compress? imagen)
-  (if (eq? (first (list-ref imagen 2)) (first (rest(list-ref imagen 2))) (compress? (rest (list-ref imagen 2))))
-           #t
-           #f))
-
-;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+(define (menor lista)
+  (cond
+    [(null? lista) null]
+    [<= (car lista) (car (cdr lista)) (menor (cons (car lista) (cddr lista)))]
+    [else (menor (cdr lista))]))
+  
